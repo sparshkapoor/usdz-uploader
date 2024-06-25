@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9D740A6E2C2B23E8006FB176 /* QRScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D740A6D2C2B23E8006FB176 /* QRScan.swift */; };
+		9D740A712C2B42AE006FB176 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 9D740A702C2B42AE006FB176 /* README.md */; };
 		9D7BEF912C246F7E0096E5F3 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7BEF902C246F7E0096E5F3 /* ARViewController.swift */; };
 		9D7BEF952C246F900096E5F3 /* CompassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7BEF942C246F900096E5F3 /* CompassView.swift */; };
 		9D7BEF972C2471BA0096E5F3 /* ARSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7BEF962C2471BA0096E5F3 /* ARSessionManager.swift */; };
@@ -43,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		9D740A6D2C2B23E8006FB176 /* QRScan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScan.swift; sourceTree = "<group>"; };
+		9D740A702C2B42AE006FB176 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		9D7BEF902C246F7E0096E5F3 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		9D7BEF942C246F900096E5F3 /* CompassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassView.swift; sourceTree = "<group>"; };
 		9D7BEF962C2471BA0096E5F3 /* ARSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARSessionManager.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				9DEACCF62C2378C300D99E5B /* Preview Content */,
 				9DA131602C25F79A005ED88D /* SCNNode+Extension.swift */,
 				9D740A6D2C2B23E8006FB176 /* QRScan.swift */,
+				9D740A702C2B42AE006FB176 /* README.md */,
 			);
 			path = usdzuploader;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D740A712C2B42AE006FB176 /* README.md in Resources */,
 				9DEACCF82C2378C300D99E5B /* Preview Assets.xcassets in Resources */,
 				9DEACCF52C2378C300D99E5B /* Assets.xcassets in Resources */,
 			);
