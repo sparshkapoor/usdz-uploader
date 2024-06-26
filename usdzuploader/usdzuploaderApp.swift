@@ -11,7 +11,16 @@ import SwiftUI
 struct usdzuploaderApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabBarControllerRepresentable()
+            .edgesIgnoringSafeArea(.all)
+            
         }
+    }
+}
+
+struct ContentViewPreview: PreviewProvider {
+    static var previews: some View {
+        TabBarControllerRepresentable()
+        .edgesIgnoringSafeArea(.all)
     }
 }

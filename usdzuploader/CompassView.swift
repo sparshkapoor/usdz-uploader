@@ -30,22 +30,32 @@ class CompassView: UIView {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
+        setupView()
     }
     
     private func setupView() {
         backgroundColor = UIColor(white: 0.8, alpha: 0.9)
         layer.cornerRadius = frame.size.width / 2
-        
+        translatesAutoresizingMaskIntoConstraints = false
+
         addSubview(knob)
         
-        knob.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        knob.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -20).isActive = true
-        knob.widthAnchor.constraint(equalToConstant: 30).isActive = true
-        knob.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        NSLayoutConstraint.activate([
+            knob.widthAnchor.constraint(equalToConstant: 30),
+            knob.heightAnchor.constraint(equalToConstant: 30),
+            knob.centerXAnchor.constraint(equalTo: centerXAnchor),
+            knob.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -10)
+        ])
         
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
         addGestureRecognizer(panGesture)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        layer.cornerRadius = frame.size.width / 2
+        updateKnobPosition()
     }
     
     @objc private func handlePan(_ gesture: UIPanGestureRecognizer) {
@@ -55,13 +65,44 @@ class CompassView: UIView {
         
         // Rotate knob smoothly
         UIView.animate(withDuration: 0.1) {
-            self.knob.center = CGPoint(x: self.bounds.midX + cos(self.rotationAngle) * (self.bounds.width / 2 - 20),
-                                       y: self.bounds.midY + sin(self.rotationAngle) * (self.bounds.height / 2 - 20))
+            self.updateKnobPosition()
             self.knob.transform = CGAffineTransform(rotationAngle: self.rotationAngle)
         }
         
         // Notify delegate
         delegate?.compassView(self, didRotateTo: rotationAngle)
     }
+    
+    private func updateKnobPosition() {
+        knob.center = CGPoint(x: bounds.midX + cos(rotationAngle) * (bounds.width / 2 - 20),
+                              y: bounds.midY + sin(rotationAngle) * (bounds.height / 2 - 20))
+    }
 }
+
+// Usage in a ViewController
+class ViewController: UIViewController, CompassViewDelegate {
+    
+    private let compassView = CompassView()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .white
+        
+        compassView.delegate = self
+        view.addSubview(compassView)
+        
+        // Auto Layout constraints for compassView
+        NSLayoutConstraint.activate([
+            compassView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            compassView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            compassView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5),
+            compassView.heightAnchor.constraint(equalTo: compassView.widthAnchor)
+        ])
+    }
+    
+    func compassView(_ compassView: CompassView, didRotateTo angle: CGFloat) {
+        print("Compass rotated to angle: \(angle)")
+    }
+}
+
 
