@@ -94,6 +94,7 @@
 		9DEACCE42C2378C200D99E5B = {
 			isa = PBXGroup;
 			children = (
+				9D740A702C2B42AE006FB176 /* README.md */,
 				9DEACD1F2C23827700D99E5B /* YourApp.entitlements */,
 				9DEACCEF2C2378C200D99E5B /* usdzuploader */,
 				9DEACD002C2378C300D99E5B /* usdzuploaderTests */,
@@ -128,7 +129,6 @@
 				9DEACCF62C2378C300D99E5B /* Preview Content */,
 				9DA131602C25F79A005ED88D /* SCNNode+Extension.swift */,
 				9D740A6D2C2B23E8006FB176 /* QRScan.swift */,
-				9D740A702C2B42AE006FB176 /* README.md */,
 			);
 			path = usdzuploader;
 			sourceTree = "<group>";
