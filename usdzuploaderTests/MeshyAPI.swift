@@ -1,19 +1,24 @@
 //
 //  MeshyAPI.swift
-//  usdzuploader
+//  usdzuploaderTests
 //
-//  Created by WorkMerkDev on 6/18/24.
+//  Created by WorkMerkDev on 6/28/24.
 //
 
 import Foundation
 
-class MeshyAPI {
-    static let shared = MeshyAPI()
+class MeshyAPITest {
+    static let shared = MeshyAPITest()
     
-    private init() {}
+    public init() {}
     
     func generate3DModel(from prompt: String, progressUpdate: @escaping (Double) -> Void, completion: @escaping (URL?) -> Void) {
-        let apiKey = "msy_yQh5Lx80udMBeZTd48GSYFTwF6GPLjdN91ZW"
+        guard let apiKey = ProcessInfo.processInfo.environment["MESHY_API_KEY"] else {
+            print("API key is missing.")
+            completion(nil)
+            return
+        }
+
         let url = URL(string: "https://api.meshy.ai/v2/text-to-3d")! // Corrected endpoint
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -39,7 +44,6 @@ class MeshyAPI {
             guard let data = data, error == nil else {
                 print("Error: \(error?.localizedDescription ?? "Unknown error")")
                 completion(nil)
-                
                 return
             }
 
@@ -67,7 +71,11 @@ class MeshyAPI {
     }
     
     private func pollTaskStatus(taskID: String, progressUpdate: @escaping (Double) -> Void, completion: @escaping (URL?) -> Void) {
-        let apiKey = "msy_yQh5Lx80udMBeZTd48GSYFTwF6GPLjdN91ZW"
+        guard let apiKey = ProcessInfo.processInfo.environment["MESHY_API_KEY"] else {
+            print("API key is missing.")
+            completion(nil)
+            return
+        }
 
         let url = URL(string: "https://api.meshy.ai/v2/text-to-3d/\(taskID)")! // Endpoint to fetch model by task ID
         var request = URLRequest(url: url)
@@ -119,4 +127,13 @@ class MeshyAPI {
         task.resume()
     }
 }
+
+
+
+
+
+
+
+
+
 

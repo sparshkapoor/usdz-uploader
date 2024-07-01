@@ -49,17 +49,17 @@ class DocumentHandler {
         viewController.loadScene(from: url)
     }
 
-    static func saveSceneFile(jsonData: Data, from viewController: UIViewController) {
+    static func saveSceneFile(jsonData: Data, sceneName: String, from viewController: UIViewController) {
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let sceneURL = documentsDirectory.appendingPathComponent("scene.json")
+        let sceneURL = documentsDirectory.appendingPathComponent("\(sceneName).json")
         do {
             try jsonData.write(to: sceneURL)
-            let documentPicker = UIDocumentPickerViewController(forExporting: [sceneURL], asCopy: true)
-            viewController.present(documentPicker, animated: true, completion: nil)
+            print("Scene saved to directory: \(sceneURL)")
         } catch {
             print("Failed to write JSON data to file: \(error)")
         }
     }
+
 
     static func copyAndLoadUSDZModel(from url: URL, viewController: ARViewController) {
         let fileManager = FileManager.default
@@ -78,5 +78,6 @@ class DocumentHandler {
         }
     }
 }
+
 
 

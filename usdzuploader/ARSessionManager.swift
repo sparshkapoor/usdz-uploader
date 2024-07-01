@@ -16,7 +16,10 @@ class ARSessionManager {
     }
 
     static func resetARSession(sceneView: ARSCNView) {
-        sceneView.session.pause()
-        setupARSession(sceneView: sceneView)
+        let configuration = ARWorldTrackingConfiguration()
+        configuration.planeDetection = [.horizontal, .vertical]
+        configuration.environmentTexturing = .automatic
+        sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
     }
 }
+

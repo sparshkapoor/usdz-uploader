@@ -28,5 +28,5 @@ final class usdzuploaderUITestsLaunchTests: XCTestCase {
         attachment.name = "Launch Screen"
         attachment.lifetime = .keepAlways
         add(attachment)
-    }
+    } 
 }

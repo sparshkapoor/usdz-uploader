@@ -1,0 +1,39 @@
+{
+  "configurations" : [
+    {
+      "id" : "553AFB09-2076-4ED8-A953-972E5B1532BC",
+      "name" : "Test Scheme Action",
+      "options" : {
+        "targetForVariableExpansion" : {
+          "containerPath" : "container:usdzuploader.xcodeproj",
+          "identifier" : "9DEACCFC2C2378C300D99E5B",
+          "name" : "usdzuploaderTests"
+        }
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "environmentVariableEntries" : [
+      {
+        "key" : "MESHY_API_KEY",
+        "value" : "TEST_KEY"
+      }
+    ],
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:usdzuploader.xcodeproj",
+      "identifier" : "9DEACCEC2C2378C200D99E5B",
+      "name" : "usdzuploader"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:usdzuploader.xcodeproj",
+        "identifier" : "9DEACCFC2C2378C300D99E5B",
+        "name" : "usdzuploaderTests"
+      }
+    }
+  ],
+  "version" : 1
+}
